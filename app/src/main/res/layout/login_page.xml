@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:gravity="center">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Digite o email"
+        android:textAlignment="center"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Digite a senha"
+        android:textAlignment="center"/>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,33 +37,14 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cadastrar-se"
-            android:layout_marginHorizontal="100dp"
-            android:background="@android:color/black"
-            android:textColor="@android:color/background_light"
-            android:onClick="cadastrarse"
-            />
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="0dp">
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:text="logar"
             android:layout_marginHorizontal="100dp"
-            android:layout_marginTop="30dp"
             android:background="@android:color/black"
             android:textColor="@android:color/background_light"
-            android:onClick="logarse"
             />
 
     </LinearLayout>
+
 
 
 </LinearLayout>

@@ -14,11 +14,10 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Cadastrar-se"
+            android:text="Treinos"
             android:layout_marginHorizontal="100dp"
             android:background="@android:color/black"
             android:textColor="@android:color/background_light"
-            android:onClick="cadastrarse"
             />
 
     </LinearLayout>
@@ -32,12 +31,11 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="logar"
+            android:text="dietas"
             android:layout_marginHorizontal="100dp"
             android:layout_marginTop="30dp"
             android:background="@android:color/black"
             android:textColor="@android:color/background_light"
-            android:onClick="logarse"
             />
 
     </LinearLayout>
