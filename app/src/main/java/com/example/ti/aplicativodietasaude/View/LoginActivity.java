@@ -1,7 +1,9 @@
-package com.example.ti.aplicativodietasaude;
+package com.example.ti.aplicativodietasaude.View;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.ti.aplicativodietasaude.R;
 
 public class LoginActivity extends AppCompatActivity {
 
