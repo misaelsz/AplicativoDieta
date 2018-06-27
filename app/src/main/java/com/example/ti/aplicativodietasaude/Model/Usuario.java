@@ -7,6 +7,8 @@ public class Usuario {
     private String senha;
     private int idade;
     private Double peso;
+    private String foto;
+
 
     public String getNome() {
         return nome;
@@ -46,5 +48,13 @@ public class Usuario {
 
     public void setPeso(Double peso) {
         this.peso = peso;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 }
