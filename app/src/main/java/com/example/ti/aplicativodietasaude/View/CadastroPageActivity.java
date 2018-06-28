@@ -22,7 +22,6 @@ import android.widget.ImageView;
 import com.example.ti.aplicativodietasaude.R;
 
 import com.example.ti.aplicativodietasaude.Model.Usuario;
-import com.example.ti.aplicativodietasaude.Util.AcessarGaleria;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -32,7 +31,6 @@ import java.util.List;
 public class CadastroPageActivity extends AppCompatActivity {
 
     List<Usuario> listaUsuarios = new ArrayList<>();
-    AcessarGaleria acessarGaleria = new AcessarGaleria();
 
     private EditText editNome;
     private EditText editEmail;
