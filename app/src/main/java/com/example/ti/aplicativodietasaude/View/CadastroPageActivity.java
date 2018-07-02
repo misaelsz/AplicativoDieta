@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.example.ti.aplicativodietasaude.DAL.UsuarioDAO;
 import com.example.ti.aplicativodietasaude.R;
 
 import com.example.ti.aplicativodietasaude.Model.Usuario;
@@ -95,6 +96,8 @@ public class CadastroPageActivity extends AppCompatActivity {
             Log.v("for: ", Integer.toString(i));
             Log.v("lista de usuarios: ", listaUsuarios.get(i).getNome());
         }
+
+        UsuarioDAO.cadastrarUsuario(usuario, this);
     }
 
     @Override public void onRequestPermissionsResult(int requestCode,String  permissions[],  int[]  grantResults) {
