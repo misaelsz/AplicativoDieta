@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ti.aplicativodietasaude"
     tools:ignore="ExtraText">
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -21,9 +21,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".View.CadastroPageActivity" />
-        <activity android:name=".View.LoginActivity"></activity>
-
+        <activity android:name=".View.LoginActivity" />
+        <activity android:name=".View.PaginaLogado" />
+        <activity android:name=".View.ListaAlimentos" />
+        <activity android:name=".View.ListaDietas" />
+        <activity android:name=".View.ListaExercicios" />
+        <activity android:name=".View.ListaTreinos"></activity>
     </application>
-
 
 </manifest>

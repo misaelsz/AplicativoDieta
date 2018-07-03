@@ -68,13 +68,13 @@
         android:gravity="center">
 
         <Button
+            android:id="@+id/cadastrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cadastrar"
             android:layout_marginHorizontal="100dp"
             android:background="@android:color/black"
             android:textColor="@android:color/background_light"
-            android:onClick="cadastrar"
             />
 
     </LinearLayout>

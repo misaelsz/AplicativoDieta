@@ -2,6 +2,7 @@ package com.example.ti.aplicativodietasaude.DAL;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -117,17 +118,51 @@ public class Banco extends SQLiteOpenHelper{
         dados.put(Contrato.TabelaUsuario.PESO, usuario.getPeso());
         dados.put(Contrato.TabelaUsuario.IDADE, usuario.getIdade());
         dados.put(Contrato.TabelaUsuario.SENHA, usuario.getSenha());
+        dados.put(Contrato.TabelaUsuario.FOTO, usuario.getFoto());
 
         return db.insert(Contrato.TabelaUsuario.NOME_TABELA, null, dados);
     }
 
-    public ArrayList<Usuario> retornaUsuario(){
+    public ArrayList<Usuario> retornaUsuarios(){
         SQLiteDatabase db = getReadableDatabase();
 
         ArrayList<Usuario> usuarios  = new ArrayList<Usuario>();
         Usuario s = new Usuario();
 
-
+        String[] colunas = new String[]{
+                Contrato.TabelaUsuario._ID,
+                Contrato.TabelaUsuario.NOME,
+                Contrato.TabelaUsuario.EMAIL,
+                Contrato.TabelaUsuario.SENHA,
+                Contrato.TabelaUsuario.PESO,
+                Contrato.TabelaUsuario.IDADE,
+                Contrato.TabelaUsuario.FOTO
+        };
+        Cursor cursor = db.query(
+                Contrato.TabelaUsuario.NOME_TABELA,
+                colunas,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0){
+            do{
+               Usuario u = new Usuario();
+               u.setNome(cursor.getString(1));
+               u.setEmail(cursor.getString(2));
+               u.setSenha(cursor.getString(3));
+               u.setPeso(cursor.getDouble(4));
+               u.setIdade(cursor.getInt(5));
+               u.setFoto(cursor.getString(6));
+               usuarios.add(u);
+            }while(cursor.moveToFirst());
+            cursor.close();
+            return usuarios;
+        }
+        return null;
     }
 
 }

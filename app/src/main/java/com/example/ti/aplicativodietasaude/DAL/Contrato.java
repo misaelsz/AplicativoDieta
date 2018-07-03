@@ -11,6 +11,7 @@ public class Contrato {
         public static final String SENHA = "senha";
         public static final String PESO = "peso";
         public static final String IDADE = "idade";
+        public static final String FOTO = "foto";
     }
 
     public static class TabelaAlimentos implements  BaseColumns{

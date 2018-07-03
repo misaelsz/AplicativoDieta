@@ -33,6 +33,8 @@ public class CadastroPageActivity extends AppCompatActivity {
 
     List<Usuario> listaUsuarios = new ArrayList<>();
 
+    String fotoEscolhida;
+
     private EditText editNome;
     private EditText editEmail;
     private EditText editSenha;
@@ -40,6 +42,7 @@ public class CadastroPageActivity extends AppCompatActivity {
     private EditText editPeso;
     private ImageView imgFoto;
     private Button  galeria;
+    private Button btnCadastrar;
     private  int PERMISSAO_REQUEST = 2;
 
 
@@ -64,6 +67,17 @@ public class CadastroPageActivity extends AppCompatActivity {
                                            startActivityForResult(intent, 1);
                                        }
                                    });
+        btnCadastrar = (Button) findViewById(R.id.cadastrar);
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cadastrar(view);
+                Intent intent = new Intent(CadastroPageActivity.this, PaginaLogado.class);
+                intent.putExtra("nomeUsuario", editNome.getText().toString());
+                intent.putExtra("fotoUsuario", fotoEscolhida);
+                startActivity(intent);
+            }
+        });
 
 
                 editNome = (EditText) findViewById(R.id.editNome);
@@ -88,7 +102,7 @@ public class CadastroPageActivity extends AppCompatActivity {
         usuario.setSenha(editSenha.getText().toString());
         usuario.setIdade(Integer.parseInt(editIdade.getText().toString()));
         usuario.setPeso(Double.parseDouble(editPeso.getText().toString()));
-        usuario.setFoto(imgFoto.getDrawable().toString());
+        usuario.setFoto(fotoEscolhida);
 
         listaUsuarios.add(usuario);
 
@@ -125,7 +139,8 @@ public class CadastroPageActivity extends AppCompatActivity {
             String  picturePath = c.getString(columnIndex);
             c.close();
             Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
-
+            Log.v("foto escolhida: ", picturePath);
+            fotoEscolhida = picturePath;
             imgFoto.setImageBitmap(thumbnail);
         }
     }
