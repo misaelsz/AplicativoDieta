@@ -26,7 +26,10 @@
         <activity android:name=".View.ListaAlimentos" />
         <activity android:name=".View.ListaDietas" />
         <activity android:name=".View.ListaExercicios" />
-        <activity android:name=".View.ListaTreinos"></activity>
+        <activity android:name=".View.ListaTreinos" />
+        <activity android:name=".View.CadastroAlimento" />
+        <activity android:name=".View.CadastraDietaAcvity" />
+        <activity android:name=".View.AdicionarAlimentoDietaActivity"></activity>
     </application>
 
 </manifest>

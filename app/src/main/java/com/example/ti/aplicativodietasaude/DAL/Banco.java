@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.ti.aplicativodietasaude.Model.Alimento;
+import com.example.ti.aplicativodietasaude.Model.Dieta;
 import com.example.ti.aplicativodietasaude.Model.Usuario;
 
 import java.util.ArrayList;
@@ -29,7 +31,8 @@ public class Banco extends SQLiteOpenHelper{
                     Contrato.TabelaUsuario.EMAIL + TIPO_TEXTO + VIRGULA +
                     Contrato.TabelaUsuario.SENHA + TIPO_TEXTO + VIRGULA +
                     Contrato.TabelaUsuario.IDADE + TIPO_TEXTO + VIRGULA +
-                    Contrato.TabelaUsuario.PESO + TIPO_TEXTO + ");";
+                    Contrato.TabelaUsuario.PESO + TIPO_TEXTO + VIRGULA +
+                    Contrato.TabelaUsuario.LOGADO + TIPO_INTEIRO +" );";
 
     public static final String SQL_CRIAR_TABELA_ALIMENTO =
             "CREATE TABLE IF NOT EXISTS " + Contrato.TabelaAlimentos.NOME_TABELA +
@@ -158,9 +161,125 @@ public class Banco extends SQLiteOpenHelper{
                u.setIdade(cursor.getInt(5));
                u.setFoto(cursor.getString(6));
                usuarios.add(u);
-            }while(cursor.moveToFirst());
+            }while(cursor.moveToNext());
             cursor.close();
             return usuarios;
+        }
+        return null;
+    }
+
+
+
+    public int deslogarUsers(){
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(Contrato.TabelaUsuario.LOGADO, 0);
+
+
+
+        return db.update(
+                Contrato.TabelaUsuario.NOME_TABELA,
+                contentValues,
+                null,
+                null
+        );
+    }
+
+
+    public  long cadastrarAlimento(Alimento alimento){
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues dados = new ContentValues();
+        dados.put(Contrato.TabelaAlimentos.NOME, alimento.getNome());
+        dados.put(Contrato.TabelaAlimentos.CALORIAS, alimento.getCalorias());
+
+
+        return db.insert(Contrato.TabelaAlimentos.NOME_TABELA, null, dados);
+    }
+
+
+    public ArrayList<Alimento> retornaAlimentos(){
+        SQLiteDatabase db = getReadableDatabase();
+
+        ArrayList<Alimento> alimentos  = new ArrayList<Alimento>();
+        Alimento s = new Alimento();
+
+        String[] colunas = new String[]{
+                Contrato.TabelaAlimentos._ID,
+                Contrato.TabelaAlimentos.NOME,
+                Contrato.TabelaAlimentos.CALORIAS,
+        };
+        Cursor cursor = db.query(
+                Contrato.TabelaAlimentos.NOME_TABELA,
+                colunas,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0){
+            do{
+                Alimento u = new Alimento();
+                u.setNome(cursor.getString(1));
+                u.setCalorias(cursor.getString(2));
+                alimentos.add(u);
+            }while(cursor.moveToNext());
+            cursor.close();
+            if(alimentos != null) {
+                return alimentos;
+            }
+        }
+        return null;
+    }
+
+    public  long cadastrarDieta(Dieta dieta){
+        SQLiteDatabase db = getWritableDatabase();
+
+        ContentValues dados = new ContentValues();
+        dados.put(Contrato.TabelaDieta.NOME, dieta.getNome());
+        dados.put(Contrato.TabelaDieta.FOTO, dieta.getImagem());
+
+
+        return db.insert(Contrato.TabelaAlimentos.NOME_TABELA, null, dados);
+    }
+
+
+    public ArrayList<Dieta> retornaDietas(){
+        SQLiteDatabase db = getReadableDatabase();
+
+        ArrayList<Dieta> dietas  = new ArrayList<Dieta>();
+        Dieta s = new Dieta();
+
+        String[] colunas = new String[]{
+                Contrato.TabelaDieta._ID,
+                Contrato.TabelaDieta.NOME,
+                Contrato.TabelaDieta.FOTO,
+
+        };
+        Cursor cursor = db.query(
+                Contrato.TabelaDieta.NOME_TABELA,
+                colunas,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        cursor.moveToFirst();
+        if(cursor.getCount() > 0){
+            do{
+                Dieta u = new Dieta();
+                u.setNome(cursor.getString(1));
+                u.setImagem(cursor.getString(2));
+                dietas.add(u);
+            }while(cursor.moveToNext());
+            cursor.close();
+            if(dietas != null) {
+                return dietas;
+            }
         }
         return null;
     }

@@ -103,15 +103,28 @@ public class CadastroPageActivity extends AppCompatActivity {
         usuario.setIdade(Integer.parseInt(editIdade.getText().toString()));
         usuario.setPeso(Double.parseDouble(editPeso.getText().toString()));
         usuario.setFoto(fotoEscolhida);
+        usuario.setLogado(1);
 
-        listaUsuarios.add(usuario);
 
         for(int i = 0; i < listaUsuarios.size(); i++){
             Log.v("for: ", Integer.toString(i));
             Log.v("lista de usuarios: ", listaUsuarios.get(i).getNome());
         }
+try {
+    listaUsuarios = UsuarioDAO.retornarUsuarios(this);
 
-        UsuarioDAO.cadastrarUsuario(usuario, this);
+    for (Usuario u : listaUsuarios) {
+
+        if (u.getEmail() == usuario.getEmail()) {
+
+        } else {
+            UsuarioDAO.cadastrarUsuario(usuario, this);
+        }
+    }
+}catch (Exception e){
+            UsuarioDAO.cadastrarUsuario(usuario, this);
+}
+
     }
 
     @Override public void onRequestPermissionsResult(int requestCode,String  permissions[],  int[]  grantResults) {

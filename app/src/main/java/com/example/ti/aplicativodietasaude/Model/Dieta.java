@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Dieta {
 
-    private int id;
     private String nome;
     private  String imagem;
     private int idUsuario;
@@ -15,14 +14,6 @@ public class Dieta {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNome() {

@@ -19,4 +19,9 @@ public class UsuarioDAO {
         Banco b = new Banco(context);
         return b.retornaUsuarios();
     }
+
+    public static void UsersDeslogar(Context context){
+        Banco db = new Banco(context);
+        db.deslogarUsers();
+    }
 }

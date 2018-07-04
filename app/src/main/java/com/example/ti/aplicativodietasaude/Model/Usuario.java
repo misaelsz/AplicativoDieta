@@ -9,6 +9,7 @@ public class Usuario {
     private int idade;
     private Double peso;
     private String foto;
+    private int logado;
 
 
     public String getNome() {
@@ -57,5 +58,21 @@ public class Usuario {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getLogado() {
+        return logado;
+    }
+
+    public void setLogado(int logado) {
+        this.logado = logado;
     }
 }
