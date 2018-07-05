@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, PaginaLogado.class);
                 intent.putExtra("nomeUsuario", u.getNome());
                 intent.putExtra("fotoUsuario", u.getFoto());
+                intent.putExtra("idUser", u.getId());
                 startActivity(intent);
             }
         }

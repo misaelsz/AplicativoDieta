@@ -3,6 +3,7 @@ package com.example.ti.aplicativodietasaude.View;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.example.ti.aplicativodietasaude.DAL.AlimentoDAO;
@@ -52,13 +53,14 @@ public class ListaDietas extends AppCompatActivity {
 
     }
 
-    public void adicionarAlimento(){
+    public void adicionarAlimento(View view){
         Intent intent = new Intent(this, ListaAlimentos.class);
         startActivity(intent);
     }
 
-    public void btnNovaDieta(){
+    public void btnNovaDieta(View view){
         Intent intent = new Intent(this, CadastraDietaAcvity.class);
+        intent.putExtra("idUser", id);
         startActivity(intent);
     }
 

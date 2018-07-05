@@ -40,7 +40,7 @@ public class PaginaLogado extends AppCompatActivity {
 
         txtNome.setText("Olá "+ nomeUsuario);
         Bitmap thumbnail = (BitmapFactory.decodeFile(fotoUsuario));
-        Log.v("caminho", fotoUsuario);
+       // Log.v("caminho", fotoUsuario);
         imgUsuario.setImageBitmap(thumbnail);
     }
 
