@@ -25,26 +25,24 @@ public class Banco extends SQLiteOpenHelper{
 
     public static final String SQL_CRIAR_TABELA_USUARIO =
             "CREATE TABLE IF NOT EXISTS " + Contrato.TabelaUsuario.NOME_TABELA +
-                    "( " + Contrato.TabelaUsuario._ID + TIPO_INTEIRO +
-                    " PRIMARY KEY AUTOINCREMENT" + VIRGULA +
+                    "( " + Contrato.TabelaUsuario.ID + TIPO_INTEIRO + VIRGULA +
                     Contrato.TabelaUsuario.NOME + TIPO_TEXTO + VIRGULA +
                     Contrato.TabelaUsuario.EMAIL + TIPO_TEXTO + VIRGULA +
                     Contrato.TabelaUsuario.SENHA + TIPO_TEXTO + VIRGULA +
                     Contrato.TabelaUsuario.IDADE + TIPO_TEXTO + VIRGULA +
                     Contrato.TabelaUsuario.PESO + TIPO_TEXTO + VIRGULA +
+                    Contrato.TabelaUsuario.FOTO + TIPO_TEXTO + VIRGULA +
                     Contrato.TabelaUsuario.LOGADO + TIPO_INTEIRO +" );";
 
     public static final String SQL_CRIAR_TABELA_ALIMENTO =
             "CREATE TABLE IF NOT EXISTS " + Contrato.TabelaAlimentos.NOME_TABELA +
-                    "( " + Contrato.TabelaAlimentos._ID + TIPO_INTEIRO +
-                    " PRIMARY KEY AUTOINCREMENT" + VIRGULA +
+                    "( " + Contrato.TabelaUsuario.ID + TIPO_INTEIRO + VIRGULA + VIRGULA +
                     Contrato.TabelaAlimentos.NOME + TIPO_TEXTO + VIRGULA +
                     Contrato.TabelaAlimentos.CALORIAS + TIPO_TEXTO + ");";
 
     public static final String SQL_CRIAR_TABELA_DIETA =
             "CREATE TABLE IF NOT EXISTS " + Contrato.TabelaDieta.NOME_TABELA +
-                    "( " + Contrato.TabelaDieta._ID + TIPO_INTEIRO +
-                    " PRIMARY KEY AUTOINCREMENT" + VIRGULA +
+                    "( " + Contrato.TabelaUsuario.ID + TIPO_INTEIRO + VIRGULA +
                     Contrato.TabelaDieta.NOME + TIPO_TEXTO + VIRGULA +
                     Contrato.TabelaDieta.FOTO + TIPO_TEXTO + VIRGULA +
                     Contrato.TabelaDieta.FK_IDUSUARIO + TIPO_INTEIRO + ");";
@@ -122,7 +120,7 @@ public class Banco extends SQLiteOpenHelper{
         dados.put(Contrato.TabelaUsuario.IDADE, usuario.getIdade());
         dados.put(Contrato.TabelaUsuario.SENHA, usuario.getSenha());
         dados.put(Contrato.TabelaUsuario.FOTO, usuario.getFoto());
-
+        dados.put(Contrato.TabelaUsuario.LOGADO, usuario.getLogado());
         return db.insert(Contrato.TabelaUsuario.NOME_TABELA, null, dados);
     }
 
@@ -241,9 +239,10 @@ public class Banco extends SQLiteOpenHelper{
         ContentValues dados = new ContentValues();
         dados.put(Contrato.TabelaDieta.NOME, dieta.getNome());
         dados.put(Contrato.TabelaDieta.FOTO, dieta.getImagem());
+        dados.put(Contrato.TabelaDieta.FK_IDUSUARIO, dieta.getIdUsuario());
 
 
-        return db.insert(Contrato.TabelaAlimentos.NOME_TABELA, null, dados);
+        return db.insert(Contrato.TabelaDieta.NOME_TABELA, null, dados);
     }
 
 

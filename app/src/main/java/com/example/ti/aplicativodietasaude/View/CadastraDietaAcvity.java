@@ -39,12 +39,16 @@ public class CadastraDietaAcvity extends AppCompatActivity {
     private Button btnCadastrar;
     private int PERMISSAO_REQUEST = 2;
 
+    private int id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastra_dieta_acvity);
 
+        Intent pegaIntent = getIntent();
+        id = (int) pegaIntent.getSerializableExtra("idUser");
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
@@ -62,12 +66,13 @@ public class CadastraDietaAcvity extends AppCompatActivity {
                 startActivityForResult(intent, 1);
             }
         });
-        btnCadastrar = (Button) findViewById(R.id.cadastrar);
+        btnCadastrar = (Button) findViewById(R.id.btnCadastrar);
         btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 cadastrar(view);
                 Intent intent = new Intent(CadastraDietaAcvity.this, ListaDietas.class);
+                intent.putExtra("idUser", id);
                 startActivity(intent);
             }
         });
@@ -81,9 +86,19 @@ public class CadastraDietaAcvity extends AppCompatActivity {
     public void cadastrar(View view) {
         Dieta dieta = new Dieta();
 
+        List<Dieta> listaProId = new ArrayList<Dieta>();
+        listaProId = DietaDAO.retornarDietas(this);
+
+        if(listaProId == null){
+            dieta.setId(0);
+        }else {
+            dieta.setId(listaProId.size() + 1);
+        }
+
         dieta.setNome(editNome.getText().toString());
         dieta.setImagem(fotoEscolhida);
-
+        dieta.setIdUsuario(id);
+        id = dieta.getId();
         DietaDAO.cadastrarDieta(dieta, this);
     }
 

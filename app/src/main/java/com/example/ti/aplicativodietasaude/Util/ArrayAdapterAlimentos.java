@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.ti.aplicativodietasaude.Model.Alimento;
 import com.example.ti.aplicativodietasaude.R;
+import com.example.ti.aplicativodietasaude.View.AdicionarAlimentoDietaActivity;
 
 import java.util.ArrayList;
 
@@ -23,7 +24,7 @@ public class ArrayAdapterAlimentos extends ArrayAdapter<Alimento> {
     private TextView txtNomeAlimento, txtCalorias;
     private ArrayList<Alimento> alimentos;
     private Context context;
-
+    private int id;
 
     public ArrayAdapterAlimentos(Context context, ArrayList<Alimento> alimentos){
         super(context, 0, alimentos);
@@ -45,6 +46,15 @@ public class ArrayAdapterAlimentos extends ArrayAdapter<Alimento> {
 
         txtNomeAlimento.setText(alimento.getNome());
         txtCalorias.setText(alimento.getCalorias());
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, AdicionarAlimentoDietaActivity.class);
+                //intent.putExtra("Dieta", dieta.getNome());
+                context.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

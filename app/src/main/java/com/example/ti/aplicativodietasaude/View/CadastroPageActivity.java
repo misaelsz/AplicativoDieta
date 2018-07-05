@@ -44,6 +44,7 @@ public class CadastroPageActivity extends AppCompatActivity {
     private Button  galeria;
     private Button btnCadastrar;
     private  int PERMISSAO_REQUEST = 2;
+    private int id;
 
 
     @Override
@@ -75,6 +76,8 @@ public class CadastroPageActivity extends AppCompatActivity {
                 Intent intent = new Intent(CadastroPageActivity.this, PaginaLogado.class);
                 intent.putExtra("nomeUsuario", editNome.getText().toString());
                 intent.putExtra("fotoUsuario", fotoEscolhida);
+                intent.putExtra("idUser", id);
+
                 startActivity(intent);
             }
         });
@@ -97,6 +100,16 @@ public class CadastroPageActivity extends AppCompatActivity {
     public void cadastrar(View view){
         Usuario usuario = new Usuario();
 
+
+        List<Usuario> listaProId = new ArrayList<Usuario>();
+        listaProId = UsuarioDAO.retornarUsuarios(this);
+
+        if(listaProId == null){
+         usuario.setId(0);
+        }else {
+            usuario.setId(listaProId.size() + 1);
+        }
+
         usuario.setNome(editNome.getText().toString());
         usuario.setEmail(editEmail.getText().toString());
         usuario.setSenha(editSenha.getText().toString());
@@ -104,13 +117,15 @@ public class CadastroPageActivity extends AppCompatActivity {
         usuario.setPeso(Double.parseDouble(editPeso.getText().toString()));
         usuario.setFoto(fotoEscolhida);
         usuario.setLogado(1);
+        id = usuario.getId();
+
 
 
         for(int i = 0; i < listaUsuarios.size(); i++){
             Log.v("for: ", Integer.toString(i));
             Log.v("lista de usuarios: ", listaUsuarios.get(i).getNome());
         }
-try {
+
     listaUsuarios = UsuarioDAO.retornarUsuarios(this);
 
     for (Usuario u : listaUsuarios) {
@@ -121,9 +136,6 @@ try {
             UsuarioDAO.cadastrarUsuario(usuario, this);
         }
     }
-}catch (Exception e){
-            UsuarioDAO.cadastrarUsuario(usuario, this);
-}
 
     }
 

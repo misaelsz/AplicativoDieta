@@ -6,6 +6,7 @@ public class Contrato {
 
     public static class TabelaUsuario implements BaseColumns{
         public static final String NOME_TABELA = "tbUsuarios";
+        public static final String ID = "id";
         public static final String NOME = "nome";
         public static final String EMAIL = "email";
         public static final String SENHA = "senha";
@@ -16,12 +17,14 @@ public class Contrato {
     }
 
     public static class TabelaAlimentos implements  BaseColumns{
+        public static final String ID = "id";
         public static final String NOME_TABELA = "tbAlimentos";
         public static final String NOME = "nome";
         public static final String CALORIAS = "calorias";
     }
 
     public static class TabelaDieta implements BaseColumns{
+        public static final String ID = "id";
         public static final String NOME_TABELA = "tbDieta";
         public static final String NOME= "nome";
         public static final String FOTO = "foto";
@@ -29,7 +32,7 @@ public class Contrato {
     }
 
     public static class TabelaExercicio implements  BaseColumns{
-        public static final String NOME_TABELA = "tbDieta";
+        public static final String NOME_TABELA = "tbExercicio";
         public static final String NOME = "nome";
     }
 

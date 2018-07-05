@@ -4,9 +4,10 @@ import java.io.Serializable;
 
 public class Alimento implements Serializable{
 
+
+    private int id;
     private String nome;
     private String calorias;
-
 
     public String getNome() {
         return nome;

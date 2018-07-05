@@ -16,6 +16,7 @@ import com.example.ti.aplicativodietasaude.R;
 public class PaginaLogado extends AppCompatActivity {
 
     private Button btnCadAlimento, btnCadDieta, btnCadExercicio, btnCadTreino;
+    private int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,14 +25,15 @@ public class PaginaLogado extends AppCompatActivity {
 
         btnCadAlimento = (Button) findViewById(R.id.btnCadAlimento);
         btnCadDieta = (Button) findViewById(R.id.btnCadDieta);
-        btnCadExercicio = (Button) findViewById(R.id.btnCadExercicio);
-        btnCadTreino = (Button) findViewById(R.id.btnCadTreino);
+//        btnCadExercicio = (Button) findViewById(R.id.btnCadExercicio);
+//        btnCadTreino = (Button) findViewById(R.id.btnCadTreino);
 
 
 
         Intent intent = getIntent();
         String nomeUsuario = (String) intent.getSerializableExtra("nomeUsuario");
         String fotoUsuario = (String) intent.getSerializableExtra("fotoUsuario");
+        id = (int) intent.getSerializableExtra("idUser");
 
         TextView txtNome = (TextView) findViewById(R.id.paramNome);
         ImageView imgUsuario = (ImageView) findViewById(R.id.paramFoto);
@@ -46,12 +48,14 @@ public class PaginaLogado extends AppCompatActivity {
     public void btnListaAlimentos(View view){
 
         Intent intent = new Intent(this, ListaAlimentos.class);
+        intent.putExtra("idUser", id);
         startActivity(intent);
     }
 
 
      public void btnListaDietas(View view){
         Intent intent = new Intent(this, ListaDietas.class);
+         intent.putExtra("idUser", id);
         startActivity(intent);
      }
 

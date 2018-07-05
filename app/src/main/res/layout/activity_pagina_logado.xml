@@ -40,12 +40,12 @@
             android:text="lista de alimentos"
             android:onClick="btnListaAlimentos"/>
 
-        <Button
-            android:id="@+id/btnCadExercicio"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="lista de exercicios"/>
+        <!--<Button-->
+          <!--/>/  android:id="@+id/btnCadExercicio"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="lista de exercicios"/>-->
 
         <Button
             android:id="@+id/btnCadDieta"
@@ -55,12 +55,12 @@
             android:text="lista de dietas"
             android:onClick="btnListaDietas"/>
 
-        <Button
-            android:id="@+id/btnCadTreino"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="lista de treinos"/>
+        <!--<Button-->
+           <!--android:id="@+id/btnCadTreino"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="lista de treinos"/>-->
 
     </LinearLayout>
 

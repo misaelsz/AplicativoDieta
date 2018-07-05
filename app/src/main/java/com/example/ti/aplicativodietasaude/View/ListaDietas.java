@@ -21,6 +21,8 @@ public class ListaDietas extends AppCompatActivity {
     private ListView listaAvancadaDieta;
     private List<Dieta> dietas;
 
+    private int id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +34,12 @@ public class ListaDietas extends AppCompatActivity {
 
         dietas = DietaDAO.retornarDietas(this);
 
+        Intent pegaIntent = getIntent();
+        id = (int) pegaIntent.getSerializableExtra("idUser");
+
         if(dietas == null){
             Intent intent = new Intent(this, CadastraDietaAcvity.class);
+            intent.putExtra("idUser", id);
             startActivity(intent);
 
         }
@@ -44,6 +50,16 @@ public class ListaDietas extends AppCompatActivity {
             listaAvancadaDieta.setAdapter(arrayAdapterDietas);
         }
 
+    }
+
+    public void adicionarAlimento(){
+        Intent intent = new Intent(this, ListaAlimentos.class);
+        startActivity(intent);
+    }
+
+    public void btnNovaDieta(){
+        Intent intent = new Intent(this, CadastraDietaAcvity.class);
+        startActivity(intent);
     }
 
 }

@@ -29,38 +29,6 @@
         android:textAlignment="center"/>
 
 
-    <EditText
-        android:id="@+id/editEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Digite o email"
-        android:textAlignment="center"/>
-
-    <EditText
-        android:id="@+id/editSenha"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Digite a senha"
-        android:textAlignment="center"/>
-
-    <EditText
-        android:id="@+id/editPeso"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Digite seu peso"
-        android:textAlignment="center"/>
-
-    <EditText
-        android:id="@+id/editIdade"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="Digite sua idade"
-        android:textAlignment="center"/>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_weight="1"
@@ -68,7 +36,7 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/cadastrar"
+            android:id="@+id/btnCadastrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cadastrar"
